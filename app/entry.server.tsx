@@ -4,22 +4,22 @@
  * For more information, see https://remix.run/file-conventions/entry.server
  */
 
-import { PassThrough } from "node:stream";
+import { PassThrough } from "stream";
 
 import type { AppLoadContext, EntryContext } from "@remix-run/node";
 import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
-import isbot from "isbot";
+import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
-const ABORT_DELAY = 5_000;
+const ABORT_DELAY = 5000;
 
 export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
-  loadContext: AppLoadContext
+  _loadContext: AppLoadContext
 ) {
   return isbot(request.headers.get("user-agent"))
     ? handleBotRequest(
