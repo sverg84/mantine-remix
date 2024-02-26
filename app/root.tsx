@@ -18,6 +18,7 @@ import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
 import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import * as React from "react";
 import PageLoadFallback from "./src/components/PageLoadFallback/PageLoadFallback";
+import WeatherWidget from "./src/components/WeatherWidget/WeatherWidget";
 
 export { default as loader } from "./src/utils/coreLoader";
 
@@ -87,6 +88,7 @@ export default function App() {
       <React.Suspense fallback={<PageLoadFallback color={color} />}>
         <Await resolve={weather}>
           <Outlet />
+          <WeatherWidget />
         </Await>
       </React.Suspense>
     </Document>
