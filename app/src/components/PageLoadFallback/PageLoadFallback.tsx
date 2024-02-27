@@ -1,14 +1,10 @@
 import { Box, Loader } from "@mantine/core";
 import * as styles from "./styles.css";
 
-type Props = Readonly<{
-  color?: string;
-}>;
-
-export default function PageLoadFallback({ color }: Props) {
+export default function PageLoadFallback() {
   return (
     <Box className={styles.box}>
-      <Loader size="4rem" color={color ?? "blue"} type="dots" />
+      <Loader size="4rem" type="dots" />
     </Box>
   );
 }

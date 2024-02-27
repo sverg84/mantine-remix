@@ -19,6 +19,7 @@ import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import * as React from "react";
 import PageLoadFallback from "./src/components/PageLoadFallback/PageLoadFallback";
 import WeatherWidget from "./src/components/WeatherWidget/WeatherWidget";
+import Nav from "./src/components/Nav/Nav";
 
 export { default as loader } from "./src/utils/coreLoader";
 
@@ -80,13 +81,13 @@ export function HydrateFallback() {
 
 export default function App() {
   const {
-    color,
     server: { weather },
   } = useLoaderData<LoaderData>();
   return (
     <Document>
-      <React.Suspense fallback={<PageLoadFallback color={color} />}>
+      <React.Suspense fallback={<PageLoadFallback />}>
         <Await resolve={weather}>
+          <Nav />
           <Outlet />
           <WeatherWidget />
         </Await>

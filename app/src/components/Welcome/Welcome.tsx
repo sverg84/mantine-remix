@@ -1,17 +1,15 @@
 import { Title, Text, Anchor } from "@mantine/core";
-import classes from "./Welcome.module.css";
+import useLocalStorageOrLoaderColor from "~/src/hooks/useLocalStorageOrLoaderColor";
 
-export function Welcome() {
+import * as styles from "./styles.css";
+
+export default function Welcome() {
+  const [color] = useLocalStorageOrLoaderColor();
   return (
     <>
-      <Title className={classes["title"] ?? ""} ta="center" mt={100}>
+      <Title className={styles.title} ta="center" mt={100}>
         Welcome to{" "}
-        <Text
-          inherit
-          variant="gradient"
-          component="span"
-          gradient={{ deg: 90, from: "#ffc2e2", to: "#4169e1" }}
-        >
+        <Text inherit component="span" c={color}>
           Mantine
         </Text>
       </Title>

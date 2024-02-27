@@ -18,7 +18,7 @@ export const img = style({
 
 export const night = style({
   animation: `${fadeInRight} 1s`,
-  backgroundImage: "linear-gradient(to top, #51678c, #0a2342)",
+  backgroundImage: "linear-gradient(to top, #283e51, #0a2342)",
 });
 
 export const day = style({
