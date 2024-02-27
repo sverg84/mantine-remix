@@ -1,5 +1,5 @@
 import { Title, Text, Anchor } from "@mantine/core";
-import useLocalStorageOrLoaderColor from "~/src/hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 
 import * as styles from "./styles.css";
 

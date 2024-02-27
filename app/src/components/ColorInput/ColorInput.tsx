@@ -1,4 +1,4 @@
-import useLocalStorageOrLoaderColor from "~/src/hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 import { ColorInput as MantineColorInput } from "@mantine/core";
 
 type Props = Omit<

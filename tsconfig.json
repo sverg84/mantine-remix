@@ -27,7 +27,8 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./app/src",
+    "rootDir": "./app",
     "paths": {
       "~/*": ["./app/*"]
     },

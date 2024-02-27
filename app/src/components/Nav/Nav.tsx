@@ -29,7 +29,7 @@ import {
 } from "@tabler/icons-react";
 import * as styles from "./styles.css";
 import { Link } from "@remix-run/react";
-import MyName from "~/src/consts/MyName";
+import MyName from "consts/MyName";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import ColorInput from "../ColorInput/ColorInput";
 
