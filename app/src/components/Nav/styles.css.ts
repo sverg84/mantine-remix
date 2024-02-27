@@ -2,7 +2,8 @@ import { rem } from "@mantine/core";
 import { style } from "@vanilla-extract/css";
 
 export const header = style({
-  height: `${rem("60px")}`,
+  position: "sticky",
+  height: rem("60px"),
   paddingInline: "var(--mantine-spacing-md)",
   borderBottom: `${rem(
     "1px"
@@ -21,7 +22,7 @@ export const link = style({
 
   "@media": {
     "(max-width: 48em)": {
-      height: `${rem("42px")}`,
+      height: rem("42px"),
       width: "100%",
     },
   },

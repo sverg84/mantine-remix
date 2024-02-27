@@ -12,7 +12,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { MantineProvider, ColorSchemeScript, createTheme } from "@mantine/core";
 import type { CoreLoaderData } from "./src/utils/coreLoader";
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
 import type { ClientLoaderFunctionArgs } from "@remix-run/react";
@@ -33,6 +33,10 @@ interface DocumentProps {
   title?: string;
 }
 
+const theme = createTheme({
+  cursorType: "pointer",
+});
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
@@ -49,7 +53,7 @@ function Document({ children, title }: DocumentProps) {
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>
+        <MantineProvider theme={theme}>
           {children}
           <ScrollRestoration />
           <Scripts />

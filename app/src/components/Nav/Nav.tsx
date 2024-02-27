@@ -30,7 +30,6 @@ import {
 import * as styles from "./styles.css";
 import { Link } from "@remix-run/react";
 import MyName from "~/src/consts/MyName";
-import useLocalStorageOrLoaderColor from "~/src/hooks/useLocalStorageOrLoaderColor";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import ColorInput from "../ColorInput/ColorInput";
 
@@ -73,8 +72,6 @@ export default function Nav() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
 
-  const [backgroundColor] = useLocalStorageOrLoaderColor();
-
   const links = mockdata.map((item) => (
     <UnstyledButton className={styles.subLink} key={item.title}>
       <Group wrap="nowrap" align="flex-start">
@@ -97,14 +94,14 @@ export default function Nav() {
   ));
 
   return (
-    <Box pb={120} color={backgroundColor}>
+    <Box pb={120}>
       <header className={styles.header}>
-        <Group justify="space-between" h="100%">
-          <Group gap={8}>
+        <Group justify="space-between" h="100%" wrap="nowrap">
+          <Group gap={8} wrap="nowrap">
             <IconBrandReact size={48} />
             <Text fw="bold">{MyName}</Text>
           </Group>
-          <Group h="100%" gap={0} visibleFrom="sm">
+          <Group h="100%" gap={0} visibleFrom="sm" wrap="nowrap">
             <Link to="/" className={styles.link}>
               Home
             </Link>
@@ -166,14 +163,15 @@ export default function Nav() {
             </Link>
           </Group>
 
-          <ColorInput visibleFrom="sm" />
-          <ColorSchemeSwitch />
-
-          <Burger
-            opened={drawerOpened}
-            onClick={toggleDrawer}
-            hiddenFrom="sm"
-          />
+          <Group wrap="nowrap">
+            <ColorInput visibleFrom="sm" />
+            <ColorSchemeSwitch />
+            <Burger
+              opened={drawerOpened}
+              onClick={toggleDrawer}
+              hiddenFrom="sm"
+            />
+          </Group>
         </Group>
       </header>
 
