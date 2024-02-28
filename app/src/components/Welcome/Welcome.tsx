@@ -1,4 +1,4 @@
-import { Title, Text, Anchor } from "@mantine/core";
+import { Anchor, Text, Title } from "@mantine/core";
 import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 
 import * as styles from "./styles.css";
@@ -7,13 +7,13 @@ export default function Welcome() {
   const [color] = useLocalStorageOrLoaderColor();
   return (
     <>
-      <Title className={styles.title} ta="center" mt={100}>
+      <Title className={styles.title} mt={100} ta="center">
         Welcome to{" "}
-        <Text inherit component="span" c={color}>
+        <Text c={color} component="span" inherit>
           Mantine
         </Text>
       </Title>
-      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
+      <Text c="dimmed" maw={580} mt="xl" mx="auto" size="lg" ta="center">
         This starter Remix project includes a minimal setup for server side
         rendering, if you want to learn more on Mantine + Remix integration
         follow{" "}

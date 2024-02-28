@@ -1,7 +1,9 @@
 import "@mantine/core/styles.css";
 
+import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
+import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import {
   Await,
   Links,
@@ -12,21 +14,16 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { MantineProvider, ColorSchemeScript, createTheme } from "@mantine/core";
-import type { CoreLoaderData } from "./src/utils/coreLoader";
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
-import type { ClientLoaderFunctionArgs } from "@remix-run/react";
+import Page from "components/Page/Page";
 import * as React from "react";
+import type { CoreLoaderData } from "types/CoreLoaderData";
+import type { LoaderData } from "types/LoaderData";
+
 import PageLoadFallback from "./src/components/PageLoadFallback/PageLoadFallback";
 import WeatherWidget from "./src/components/WeatherWidget/WeatherWidget";
-import Nav from "./src/components/Nav/Nav";
 
 export { default as loader } from "./src/utils/coreLoader";
-
-export type LoaderData = Readonly<{
-  color: string;
-  server: Jsonify<CoreLoaderData>;
-}>;
 
 interface DocumentProps {
   children: React.ReactNode;
@@ -38,7 +35,7 @@ const theme = createTheme({
 });
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref ? [{ href: cssBundleHref, rel: "stylesheet" }] : []),
 ];
 
 function Document({ children, title }: DocumentProps) {
@@ -46,7 +43,7 @@ function Document({ children, title }: DocumentProps) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
         {title && <title>{title}</title>}
         <Meta />
         <Links />
@@ -70,7 +67,7 @@ export async function clientLoader({
   const serverData: Jsonify<CoreLoaderData> = await serverLoader();
 
   const color = localStorage.getItem("color") ?? "#fff";
-  return { server: serverData, color };
+  return { color, server: serverData };
 }
 
 clientLoader.hydrate = true;
@@ -91,8 +88,9 @@ export default function App() {
     <Document>
       <React.Suspense fallback={<PageLoadFallback />}>
         <Await resolve={weather}>
-          <Nav />
-          <Outlet />
+          <Page>
+            <Outlet />
+          </Page>
           <WeatherWidget />
         </Await>
       </React.Suspense>

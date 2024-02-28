@@ -1,8 +1,8 @@
+import { Card, Image, Stack, Text, Tooltip } from "@mantine/core";
 import { useAsyncValue } from "@remix-run/react";
-import type { WeatherData } from "../../utils/coreLoader";
+import type { WeatherData } from "types/WeatherData";
 
 import * as styles from "./styles.css";
-import { Card, Flex, Text, Tooltip } from "@mantine/core";
 
 export default function WeatherWidget() {
   const weather = useAsyncValue() as WeatherData;
@@ -14,37 +14,37 @@ export default function WeatherWidget() {
 
   return (
     <Card
-      className={isNight ? styles.night : styles.day}
-      pos="fixed"
       bottom="1.5em"
-      right="1.5em"
       c="white"
-      radius="lg"
-      shadow="lg"
+      className={isNight ? styles.night : styles.day}
       padding="0.5em"
+      pos="fixed"
+      radius="lg"
+      right="1.5em"
+      shadow="lg"
     >
-      <Flex align="center" direction="column">
+      <Stack align="center" gap={0}>
         <Text component="h6" fw="bold">
           {weather.city}
         </Text>
         <Tooltip
-          withArrow={true}
-          position="left"
-          label={<Text>{weather.description}</Text>}
+          label={weather.description}
           offset={16}
+          position="left"
+          withArrow={true}
         >
-          <img
+          <Image
             alt={weather.description}
             className={styles.img}
+            h={64}
             src={weather.icon}
-            width={64}
-            height={64}
+            w={64}
           />
         </Tooltip>
         <Text fw="bold">
           {weather.fahrenheit}&deg;F / {weather.celsius}&deg;C
         </Text>
-      </Flex>
+      </Stack>
     </Card>
   );
 }

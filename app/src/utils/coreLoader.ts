@@ -1,20 +1,7 @@
 import type { TypedDeferredData } from "@remix-run/node";
 import { defer } from "@remix-run/node";
-
-export type WeatherData = Readonly<{
-  celsius: number;
-  city: string;
-  description: string;
-  fahrenheit: number;
-  icon: string;
-  sunrise: number;
-  sunset: number;
-}>;
-
-export type CoreLoaderData = Readonly<{
-  weather: Promise<WeatherData>;
-  updateTime: string;
-}>;
+import type { CoreLoaderData } from "types/CoreLoaderData";
+import type { WeatherData } from "types/WeatherData";
 
 async function genFetch(url: string) {
   const res = await fetch(url);
@@ -40,7 +27,7 @@ export default async function coreLoader(): Promise<
   const updateTime = await genLatestUpdateTime();
 
   return defer({
-    weather,
     updateTime,
+    weather,
   });
 }

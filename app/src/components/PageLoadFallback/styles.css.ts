@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
 export const box = style({
-  display: "flex",
   alignItems: "center",
+  display: "flex",
+  height: "100vh",
   justifyContent: "center",
   width: "100vw",
-  height: "100vh",
 });

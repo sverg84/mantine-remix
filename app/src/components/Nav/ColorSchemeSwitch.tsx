@@ -1,11 +1,16 @@
 import {
-  Switch,
-  useMantineTheme,
   rem,
+  Switch,
   useMantineColorScheme,
+  useMantineTheme,
 } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons-react";
+import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import { useState } from "react";
+
+type IconProps = Readonly<{
+  stroke: number;
+  style: React.CSSProperties;
+}>;
 
 export default function ColorSchemeSwitch() {
   const theme = useMantineTheme();
@@ -20,30 +25,19 @@ export default function ColorSchemeSwitch() {
     toggleColorScheme();
   };
 
-  const sunIcon = (
-    <IconSun
-      style={{ width: rem(16), height: rem(16) }}
-      stroke={2.5}
-      color={theme.colors.yellow[4]}
-    />
-  );
-
-  const moonIcon = (
-    <IconMoonStars
-      style={{ width: rem(16), height: rem(16) }}
-      stroke={2.5}
-      color={theme.colors.blue[6]}
-    />
-  );
+  const iconProps: IconProps = {
+    stroke: 2.5,
+    style: { height: rem(16), width: rem(16) },
+  };
 
   return (
     <Switch
       checked={checked}
-      size="md"
       color="dark.4"
-      onLabel={sunIcon}
-      offLabel={moonIcon}
+      offLabel={<IconMoonStars color={theme.colors.blue[6]} {...iconProps} />}
+      size="md"
       onChange={onChange}
+      onLabel={<IconSun color={theme.colors.yellow[4]} {...iconProps} />}
     />
   );
 }

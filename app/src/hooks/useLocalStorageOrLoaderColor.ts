@@ -9,7 +9,7 @@ export default function useLocalStorageOrLoaderColor() {
   >;
 
   return useLocalStorage({
-    key: "color",
     defaultValue: color,
+    key: "color",
   });
 }

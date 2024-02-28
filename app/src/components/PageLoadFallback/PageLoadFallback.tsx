@@ -1,4 +1,5 @@
 import { Box, Loader } from "@mantine/core";
+
 import * as styles from "./styles.css";
 
 export default function PageLoadFallback() {
