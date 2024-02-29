@@ -1,12 +1,9 @@
 import { useLocalStorage } from "@mantine/hooks";
-import { useRouteLoaderData } from "@remix-run/react";
-import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
-import type { LoaderData } from "types/LoaderData";
+
+import useAppLoaderData from "./useAppLoaderData";
 
 export default function useLocalStorageOrLoaderColor() {
-  const { color } = useRouteLoaderData<LoaderData>("root") as NonNullable<
-    Jsonify<LoaderData>
-  >;
+  const { color } = useAppLoaderData();
 
   return useLocalStorage({
     defaultValue: color,

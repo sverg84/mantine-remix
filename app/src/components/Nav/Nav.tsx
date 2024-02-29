@@ -12,6 +12,7 @@ import {
   HoverCard,
   rem,
   SimpleGrid,
+  Stack,
   Text,
   ThemeIcon,
   UnstyledButton,
@@ -29,11 +30,14 @@ import {
   IconFingerprint,
   IconNotification,
 } from "@tabler/icons-react";
+import LatestPushTime from "components/LatestPushTime/LatestPushTime";
 import MyName from "consts/MyName";
 
 import ColorInput from "../ColorInput/ColorInput";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import * as styles from "./styles.css";
+
+const DRAWER_ZINDEX = 1000000;
 
 const mockdata = [
   {
@@ -183,7 +187,7 @@ export default function Nav() {
         padding="md"
         size="50%"
         title={MyName}
-        zIndex={1000000}
+        zIndex={DRAWER_ZINDEX}
         onClose={closeDrawer}
       >
         <Divider />
@@ -212,7 +216,12 @@ export default function Nav() {
 
         <Divider mb="sm" />
 
-        <ColorInput popoverProps={{ zIndex: 1000000 }} />
+        <ColorInput popoverProps={{ zIndex: DRAWER_ZINDEX }} />
+
+        <Stack bottom={0} gap="xl" mb="xl" pos="fixed" w="100%">
+          <Divider />
+          <LatestPushTime zIndex={DRAWER_ZINDEX} />
+        </Stack>
       </Drawer>
     </AppShellHeader>
   );
