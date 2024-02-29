@@ -30,10 +30,10 @@ import {
   IconFingerprint,
   IconNotification,
 } from "@tabler/icons-react";
-import LatestPushTime from "components/LatestPushTime/LatestPushTime";
 import MyName from "consts/MyName";
 
 import ColorInput from "../ColorInput/ColorInput";
+import LatestPushTime from "../LatestPushTime/LatestPushTime";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import * as styles from "./styles.css";
 
@@ -112,13 +112,7 @@ export default function Nav() {
           <Link className={styles.link} to="/">
             Home
           </Link>
-          <HoverCard
-            position="bottom"
-            radius="md"
-            shadow="md"
-            width={600}
-            withinPortal
-          >
+          <HoverCard position="bottom" radius="md" shadow="md" width={600}>
             <HoverCard.Target>
               <Link className={styles.link} to="/">
                 <Center inline>

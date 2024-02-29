@@ -1,5 +1,5 @@
-import { Card, Image, Text } from "@mantine/core";
 import type { MetaFunction } from "@remix-run/node";
+import BodyCard from "components/BodyCard/BodyCard";
 import Welcome from "components/Welcome/Welcome";
 
 export const meta: MetaFunction = () => {
@@ -12,11 +12,11 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Card
+      {/* <Card
         component="a"
         href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         padding="xl"
-        shadow="sm"
+        shadow="md"
         target="_blank"
       >
         <Card.Section>
@@ -35,7 +35,8 @@ export default function Index() {
           Please click anywhere on this card to claim your reward, this is not a
           fraud, trust us
         </Text>
-      </Card>
+      </Card> */}
+      <BodyCard />
       <Welcome />
     </>
   );
