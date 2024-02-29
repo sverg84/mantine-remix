@@ -1,31 +1,33 @@
 import { Button } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
-import type { TablerIconsProps } from "@tabler/icons-react";
-
-type Props = Readonly<{
-  Icon: (props: TablerIconsProps) => JSX.Element;
-  ariaLabel: string;
-  color: string;
-  href: string;
-}>;
+import type { Props } from "types/ExternalLinkButtonProps";
 
 export default function ExternalLinkButton({
   Icon,
   ariaLabel,
   color,
+  gradient,
   href,
 }: Props) {
   const { hovered, ref } = useHover<HTMLAnchorElement>();
 
+  const variant =
+    gradient != null ? "gradient" : hovered ? "filled" : "outline";
+
+  // Either "gradient" or "color" is guaranteed to be defined (but never both)
+  const colorProps =
+    gradient != null ? { gradient } : { color: color as string };
+
   return (
     <Button
       aria-label={ariaLabel}
-      color={color}
       component="a"
       href={href}
       ref={ref}
+      size="compact-xl"
       target="_blank"
-      variant={hovered ? "filled" : "outline"}
+      variant={variant}
+      {...colorProps}
     >
       <Icon size={36} />
     </Button>

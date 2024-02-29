@@ -1,6 +1,6 @@
 import { IconBrandGithub } from "@tabler/icons-react";
 
-import ExternalLinkButton from "../ExternalLinkButton/ExternalLinkButton";
+import ExternalLinkButton from "./ExternalLinkButton";
 
 export default function GitHubButton() {
   return (

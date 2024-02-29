@@ -1,6 +1,7 @@
 import { Card, Grid, Group, Image, Text } from "@mantine/core";
-import GitHubButton from "components/GitHubButton/GitHubButton";
-import LinkedInButton from "components/LinkedInButton/LinkedInButton";
+import EmailButton from "components/buttons/EmailButton";
+import GitHubButton from "components/buttons/GitHubButton";
+import LinkedInButton from "components/buttons/LinkedInButton";
 
 import * as styles from "./styles.css";
 
@@ -46,11 +47,11 @@ export default function BodyCard() {
             <LinkedInButton />
           </Column>
           <Column>
-            <LinkedInButton />
+            <EmailButton />
           </Column>
           <Column forceXS={false}>
-            <LinkedInButton />
             <GitHubButton />
+            <LinkedInButton />
           </Column>
         </Grid>
       </Card.Section>

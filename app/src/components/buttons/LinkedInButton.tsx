@@ -1,6 +1,6 @@
 import { IconBrandLinkedin } from "@tabler/icons-react";
 
-import ExternalLinkButton from "../ExternalLinkButton/ExternalLinkButton";
+import ExternalLinkButton from "./ExternalLinkButton";
 
 export default function LinkedInButton() {
   return (
