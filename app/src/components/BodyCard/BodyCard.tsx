@@ -1,12 +1,13 @@
 import { Card } from "@mantine/core";
 import { useLocation } from "@remix-run/react";
+import type { AboutMeCardFooterType } from "components/about/AboutMeCardFooter";
 import * as React from "react";
 
 import BodyCardHeader from "./BodyCardHeader";
 
 type Props = Readonly<{
   children: React.ReactNode;
-  footer?: React.ReactElement<object, "time">;
+  footer?: ReturnType<AboutMeCardFooterType>;
   id: string;
   title?: string;
 }>;

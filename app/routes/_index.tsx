@@ -1,5 +1,7 @@
+import { List, Stack } from "@mantine/core";
 import type { MetaFunction } from "@remix-run/node";
 import AboutMeCard from "components/about/AboutMeCard";
+import ExperienceCard from "components/experience/ExperienceCard";
 import Welcome from "components/Welcome/Welcome";
 
 export const meta: MetaFunction = () => {
@@ -12,7 +14,10 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <AboutMeCard />
+      <Stack component={List} gap="xl">
+        <AboutMeCard />
+        <ExperienceCard />
+      </Stack>
       <Welcome />
     </>
   );
