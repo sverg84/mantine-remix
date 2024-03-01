@@ -4,6 +4,5 @@ export type WeatherData = Readonly<{
   description: string;
   fahrenheit: number;
   icon: string;
-  sunrise: number;
-  sunset: number;
+  night: boolean;
 }>;

@@ -16,7 +16,7 @@ function genWeatherData(): Promise<WeatherData> {
 
 function genLatestUpdateTime(): Promise<string> {
   return genFetch(
-    "https://3a15ktad20.execute-api.us-east-2.amazonaws.com/Production/"
+    "https://2wxny1ysq9.execute-api.us-east-2.amazonaws.com/default"
   );
 }
 

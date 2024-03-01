@@ -6,17 +6,12 @@ import * as styles from "./styles.css";
 
 export default function WeatherWidget() {
   const weather = useAsyncValue() as WeatherData;
-  const currentTime = new Date().getTime();
-
-  const isNight =
-    currentTime < weather.sunrise * 1000 ||
-    currentTime >= weather.sunset * 1000;
 
   return (
     <Card
       bottom="1.5em"
       c="white"
-      className={isNight ? styles.night : styles.day}
+      className={weather.night ? styles.night : styles.day}
       padding="0.5em"
       pos="fixed"
       radius="lg"

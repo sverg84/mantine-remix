@@ -12,7 +12,6 @@ import {
   HoverCard,
   rem,
   SimpleGrid,
-  Stack,
   Text,
   ThemeIcon,
   UnstyledButton,
@@ -212,10 +211,9 @@ export default function Nav() {
 
         <ColorInput popoverProps={{ zIndex: DRAWER_ZINDEX }} />
 
-        <Stack bottom={0} gap="xl" mb="xl" pos="fixed" w="100%">
-          <Divider />
+        <Box bottom={0} left="25%" mb="xl" pos="fixed">
           <LatestPushTime zIndex={DRAWER_ZINDEX} />
-        </Stack>
+        </Box>
       </Drawer>
     </AppShellHeader>
   );

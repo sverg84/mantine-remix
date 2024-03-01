@@ -36,7 +36,7 @@ export default function LatestPushTime({ zIndex = 300 }: Props) {
   const timeSinceLastUpdate = updateTimeAsDate.getTime() - new Date().getTime();
 
   return (
-    <Group gap={4} justify="center">
+    <Group gap={4}>
       <Text>Last updated:</Text>
       <Tooltip
         label={updateTimeAsDate.toLocaleString()}
