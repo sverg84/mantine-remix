@@ -1,13 +1,14 @@
-import { Button, Tooltip } from "@mantine/core";
+import { Button, Group, Tooltip } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import type { Props } from "types/ExternalLinkButtonProps";
 
 export default function ExternalLinkButton({
   Icon,
-  ariaLabel,
   color,
   gradient,
   href,
+  label,
+  renderLabel,
 }: Props) {
   const { hovered, ref } = useHover<HTMLAnchorElement>();
 
@@ -19,18 +20,26 @@ export default function ExternalLinkButton({
     gradient != null ? { gradient } : { color: color as string };
 
   return (
-    <Tooltip label={ariaLabel} openDelay={250} position="bottom">
+    <Tooltip
+      hidden={renderLabel}
+      label={label}
+      openDelay={250}
+      position="bottom"
+    >
       <Button
-        aria-label={ariaLabel}
+        aria-label={label}
         component="a"
         href={href}
         ref={ref}
-        size="compact-xl"
+        size="md"
         target="_blank"
         variant={variant}
         {...colorProps}
       >
-        <Icon size={36} />
+        <Group gap={8}>
+          {renderLabel && label}
+          <Icon size={36} />
+        </Group>
       </Button>
     </Tooltip>
   );

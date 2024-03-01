@@ -3,8 +3,9 @@ import type { TablerIconsProps } from "@tabler/icons-react";
 
 interface PropsCommon {
   Icon: (props: TablerIconsProps) => JSX.Element;
-  ariaLabel: string;
   href: string;
+  label: string;
+  renderLabel?: boolean;
 }
 
 interface PropsGradient extends PropsCommon {

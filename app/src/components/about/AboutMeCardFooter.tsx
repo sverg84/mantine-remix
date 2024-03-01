@@ -2,6 +2,7 @@ import { CardSection, Grid } from "@mantine/core";
 import EmailButton from "components/buttons/EmailButton";
 import GitHubButton from "components/buttons/GitHubButton";
 import LinkedInButton from "components/buttons/LinkedInButton";
+import ResumeButton from "components/buttons/ResumeButton";
 
 import * as styles from "./footer.css";
 
@@ -29,7 +30,7 @@ export default function AboutMeCardFooter() {
     <CardSection className={styles.footer} component="footer" px="lg" py="xs">
       <Grid>
         <Column>
-          <LinkedInButton />
+          <ResumeButton />
         </Column>
         <Column>
           <EmailButton />

@@ -10,5 +10,5 @@ export const col = style({
 
 export const footer = style({
   backgroundColor:
-    "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5))",
+    "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7))",
 });
