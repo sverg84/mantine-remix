@@ -20,7 +20,6 @@ export type Item = Readonly<{
   description: JSX.Element;
   id: string;
   skillsList: Array<string>;
-  src: string;
   timeframe: string;
   title: string;
 }>;
@@ -51,7 +50,6 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
       ),
       id: "meta_swe",
       skillsList: ["PHP", "React", "GraphQL", "MySQL"],
-      src: "/meta.gif",
       timeframe: "2020-2023",
       title: "Software Engineer",
     },
@@ -68,7 +66,6 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
       ),
       id: "meta_intern",
       skillsList: ["C++", "Python", "Apache Thrift", "MySQL"],
-      src: "/meta.gif",
       timeframe: "Summer 2019",
       title: "Software Engineer Intern",
     },
@@ -97,7 +94,6 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
       ),
       id: "umich_urop",
       skillsList: ["MATLAB", "Wolfram Mathematica"],
-      src: "/umich.jpeg",
       timeframe: "2016-2017",
       title: "Research Assistant",
     },

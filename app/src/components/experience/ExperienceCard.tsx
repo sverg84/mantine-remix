@@ -1,4 +1,4 @@
-import { Badge, Group, Stack, Text, Timeline } from "@mantine/core";
+import { Badge, Flex, Group, Stack, Text, Timeline } from "@mantine/core";
 import BodyCard from "components/BodyCard/BodyCard";
 import type { Item as TimelineItem } from "hooks/useExperienceTimelineItems";
 import useExperienceTimelineItems from "hooks/useExperienceTimelineItems";
@@ -7,20 +7,37 @@ import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 function ItemContent({
   badge: { color, label, variant },
   description,
+  skillsList,
   timeframe,
   title,
 }: TimelineItem) {
   return (
     <Stack gap={4}>
-      <Group align="center">
+      <Flex
+        align={{ base: "flex-start", sm: "center" }}
+        columnGap={{ base: 0, sm: "md" }}
+        direction={{ base: "column", sm: "row" }}
+        mb={{ base: 4, sm: 0 }}
+        rowGap={{ base: 4, sm: 0 }}
+      >
         <Text>{title}</Text>
-        <Badge color={color} variant={variant}>
-          {label}
-        </Badge>
-        <Text size="xs">({timeframe})</Text>
-      </Group>
+        <Group>
+          <Badge color={color} variant={variant}>
+            {label}
+          </Badge>
+          <Text size="xs">({timeframe})</Text>
+        </Group>
+      </Flex>
       <Text c="dimmed" size="sm">
         {description}
+      </Text>
+      <Text component="span" size="sm">
+        <Group align="center" gap={4} wrap="nowrap">
+          <Text fw="bold" inherit={true}>
+            Skills:
+          </Text>
+          <Text inherit={true}>{skillsList.join(", ")}</Text>
+        </Group>
       </Text>
     </Stack>
   );
