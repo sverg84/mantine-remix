@@ -30,7 +30,7 @@ export default function SpotifyEmbed() {
         className={isLoading ? styles.loading : styles.spotify}
         component="iframe"
         loading="lazy"
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1EVJHK7Q1TBABQ?utm_source=generator"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1EVJHK7Q1TBABQ?utm_source=generator&theme=0"
         title="Spotify playlist"
         onLoad={onLoad}
         {...commonProps}
