@@ -15,7 +15,6 @@ import {
   Text,
   ThemeIcon,
   UnstyledButton,
-  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "@remix-run/react";
@@ -30,6 +29,7 @@ import {
   IconNotification,
 } from "@tabler/icons-react";
 import MyName from "consts/MyName";
+import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 
 import ColorInput from "../ColorInput/ColorInput";
 import LatestPushTime from "../LatestPushTime/LatestPushTime";
@@ -77,14 +77,14 @@ export default function Nav() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const theme = useMantineTheme();
+  const [color] = useLocalStorageOrLoaderColor();
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={styles.subLink} key={item.title}>
       <Group align="flex-start" wrap="nowrap">
         <ThemeIcon radius="md" size={34} variant="default">
           <item.icon
-            color={theme.colors.blue[6]}
+            color={color}
             style={{ height: rem(22), width: rem(22) }}
           />
         </ThemeIcon>
@@ -119,7 +119,7 @@ export default function Nav() {
                     Features
                   </Box>
                   <IconChevronDown
-                    color={theme.colors.blue[6]}
+                    color={color}
                     style={{ height: rem(16), width: rem(16) }}
                   />
                 </Center>
@@ -129,7 +129,7 @@ export default function Nav() {
             <HoverCard.Dropdown style={{ overflow: "hidden" }}>
               <Group justify="space-between" px="md">
                 <Text fw={500}>Features</Text>
-                <Anchor fz="xs" href="#">
+                <Anchor c={color} fz="xs" href="#">
                   View all
                 </Anchor>
               </Group>
@@ -194,7 +194,7 @@ export default function Nav() {
               Features
             </Box>
             <IconChevronDown
-              color={theme.colors.blue[6]}
+              color={color}
               style={{ height: rem(16), width: rem(16) }}
             />
           </Center>
