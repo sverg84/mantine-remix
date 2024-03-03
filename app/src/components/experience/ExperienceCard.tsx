@@ -1,4 +1,4 @@
-import { Timeline } from "@mantine/core";
+import { isLightColor, Timeline } from "@mantine/core";
 import BodyCard from "components/BodyCard/BodyCard";
 import useExperienceTimelineItems from "hooks/useExperienceTimelineItems";
 import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
@@ -18,7 +18,15 @@ export default function ExperienceCard() {
         lineWidth={6}
       >
         {items.map((item) => (
-          <Timeline.Item bullet={<item.Icon size={24} />} key={item.id}>
+          <Timeline.Item
+            bullet={
+              <item.Icon
+                color={isLightColor(color) ? "black" : "white"}
+                size={24}
+              />
+            }
+            key={item.id}
+          >
             <ExperienceTimelineItem item={item} />
           </Timeline.Item>
         ))}
