@@ -1,5 +1,4 @@
 import { AspectRatio, Grid, Group, Image, Text, Title } from "@mantine/core";
-import { Link } from "@remix-run/react";
 import MyName from "consts/MyName";
 import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 import moment from "moment";
@@ -29,7 +28,12 @@ export default function AboutMeCardBody() {
       <Grid.Col className={styles.imageCol} span={{ md: 4 }}>
         <Group justify="center">
           <AspectRatio className={styles.image} maw={300}>
-            <Image loading="lazy" radius="md" src="/sverg.jpeg" />
+            <Image
+              alt={`${MyName} in the tulip field`}
+              loading="lazy"
+              radius="md"
+              src="/sverg.webp"
+            />
           </AspectRatio>
         </Group>
       </Grid.Col>
@@ -69,20 +73,6 @@ export default function AboutMeCardBody() {
           Since parting with Meta, I have been self-teaching{" "}
           {<Language language="TypeScript" />} in order to keep my UI-building
           skills fresh, replete with {<Language language="SCSS" />} modules.
-        </Text>
-        <Text mb="1rem">
-          Click{" "}
-          {
-            <Text
-              c={color}
-              component={Link}
-              data-testid="personal-link"
-              to="/personal"
-            >
-              <strong>here</strong>
-            </Text>
-          }{" "}
-          if you would like to learn more about me beyond my career!
         </Text>
         <SpotifyEmbed />
       </Grid.Col>
