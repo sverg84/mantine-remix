@@ -4,7 +4,6 @@ import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
 import moment from "moment";
 
 import * as styles from "./body.css";
-import SpotifyEmbed from "./SpotifyEmbed";
 
 const BIRTHDATE: Date = new Date("1998-05-06T10:47:00.000-06:00"); // 6 May 1998 11:47 A.M. US Central Time
 
@@ -74,7 +73,6 @@ export default function AboutMeCardBody() {
           {<Language language="TypeScript" />} in order to keep my UI-building
           skills fresh, replete with {<Language language="SCSS" />} modules.
         </Text>
-        <SpotifyEmbed />
       </Grid.Col>
     </Grid>
   );
