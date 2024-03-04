@@ -104,8 +104,12 @@ export default function Nav() {
     <AppShellHeader px="var(--mantine-spacing-md)">
       <Group h="100%" justify="space-between" wrap="nowrap">
         <Group gap={8} wrap="nowrap">
-          <Link to="/">
-            <IconBrandReact color={REACT_COLOR} size={48} />
+          <Link aria-label="Home page icon link" to="/">
+            <IconBrandReact
+              className={styles.react}
+              color={REACT_COLOR}
+              size={48}
+            />
           </Link>
           <Link className={styles.home} to="/">
             <Text fw="bold">{MyName}</Text>

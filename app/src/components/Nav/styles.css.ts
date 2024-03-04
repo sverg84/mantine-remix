@@ -7,6 +7,10 @@ const bg = (n: number) =>
 const color =
   "light-dark(var(--mantine-color-black), var(--mantine-color-white))";
 
+export const react = style({
+  verticalAlign: "middle",
+});
+
 export const home = style({
   color,
   textDecoration: "none",
