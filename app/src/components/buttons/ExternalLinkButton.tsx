@@ -2,6 +2,8 @@ import { Button, Group, Tooltip } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import type { Props } from "types/ExternalLinkButtonProps";
 
+import * as styles from "./styles.css";
+
 export default function ExternalLinkButton({
   Icon,
   color,
@@ -28,6 +30,7 @@ export default function ExternalLinkButton({
     >
       <Button
         aria-label={label}
+        className={styles.button}
         component="a"
         href={href}
         ref={ref}

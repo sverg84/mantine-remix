@@ -11,7 +11,6 @@ export default function ResumeButton() {
       color={color}
       href="/sverg_resume.pdf"
       label="Download resume"
-      renderLabel={true}
     />
   );
 }
