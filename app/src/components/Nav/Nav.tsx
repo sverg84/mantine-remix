@@ -175,6 +175,7 @@ export default function Nav() {
           <ColorInput visibleFrom="sm" />
           <ColorSchemeSwitch />
           <Burger
+            aria-label="Show navigation drawer"
             hiddenFrom="sm"
             opened={drawerOpened}
             onClick={toggleDrawer}
