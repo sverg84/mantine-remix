@@ -1,7 +1,7 @@
 import { AspectRatio, Grid, Group, Image, Text, Title } from "@mantine/core";
 import MyName from "consts/MyName";
+import { intervalToDuration } from "date-fns/intervalToDuration";
 import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
-import moment from "moment";
 
 import * as styles from "./body.css";
 
@@ -20,7 +20,7 @@ function Language({ language }: { language: string }) {
 export default function AboutMeCardBody() {
   const [color] = useLocalStorageOrLoaderColor();
 
-  const age = moment.duration(moment().diff(BIRTHDATE)).years();
+  const age = intervalToDuration({ end: new Date(), start: BIRTHDATE }).years;
 
   return (
     <Grid justify="center">
