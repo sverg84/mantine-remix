@@ -1,4 +1,4 @@
-import { Image, rem, Skeleton } from "@mantine/core";
+import { Image, Skeleton } from "@mantine/core";
 import { useState } from "react";
 
 import * as styles from "./spotify.css";
@@ -22,7 +22,7 @@ export default function SpotifyEmbed() {
     <>
       <Skeleton
         display={isLoading ? undefined : "none"}
-        radius={rem(16)}
+        radius={16}
         {...commonProps}
       />
       <Image
@@ -30,7 +30,7 @@ export default function SpotifyEmbed() {
         className={isLoading ? styles.loading : styles.spotify}
         component="iframe"
         loading="lazy"
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1EVJHK7Q1TBABQ?utm_source=generator&theme=0"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1EVJHK7Q1TBABQ?utm_source=oembed"
         title="Spotify playlist"
         onLoad={onLoad}
         {...commonProps}
