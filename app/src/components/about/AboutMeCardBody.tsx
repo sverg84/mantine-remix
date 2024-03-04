@@ -31,7 +31,7 @@ export default function AboutMeCardBody() {
               alt={`${MyName} in the tulip field`}
               loading="lazy"
               radius="md"
-              src="/sverg.webp"
+              src="https://dv8qyiytu2cuu.cloudfront.net/sverg.webp"
             />
           </AspectRatio>
         </Group>
