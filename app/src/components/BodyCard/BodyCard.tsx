@@ -1,12 +1,11 @@
 import { Card } from "@mantine/core";
-import type { AboutMeCardFooterType } from "components/about/AboutMeCardFooter";
 import * as React from "react";
 
 import BodyCardHeader from "./BodyCardHeader";
 
 type Props = Readonly<{
   children: React.ReactNode;
-  footer?: ReturnType<AboutMeCardFooterType>;
+  footer?: React.JSX.Element;
   id: string;
   title?: string;
 }>;
