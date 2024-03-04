@@ -1,4 +1,4 @@
-import { Card, Image, Stack, Text, Tooltip } from "@mantine/core";
+import { Card, Image, Stack, Text, Title, Tooltip } from "@mantine/core";
 import { useAsyncValue } from "@remix-run/react";
 import type { WeatherData } from "types/WeatherData";
 
@@ -19,9 +19,7 @@ export default function WeatherWidget() {
       shadow="lg"
     >
       <Stack align="center" gap={0}>
-        <Text component="h6" fw="bold">
-          {weather.city}
-        </Text>
+        <Title size="h5">{weather.city}</Title>
         <Tooltip
           label={weather.description}
           offset={16}

@@ -16,14 +16,13 @@ import {
 } from "@remix-run/react";
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
 import Page from "components/Page/Page";
+import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
+import WeatherWidget from "components/WeatherWidget/WeatherWidget";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
 import type { LoaderData } from "types/LoaderData";
 
-import PageLoadFallback from "./src/components/PageLoadFallback/PageLoadFallback";
-import WeatherWidget from "./src/components/WeatherWidget/WeatherWidget";
-
-export { default as loader } from "./src/utils/coreLoader";
+export { default as loader } from "utils/coreLoader";
 
 interface DocumentProps {
   children: React.ReactNode;
@@ -87,12 +86,14 @@ export default function App() {
   return (
     <Document>
       <React.Suspense fallback={<PageLoadFallback />}>
-        <Await resolve={weather}>
-          <Page>
-            <Outlet />
-          </Page>
-          <WeatherWidget />
-        </Await>
+        <Page>
+          <Outlet />
+        </Page>
+        <React.Suspense fallback={null}>
+          <Await resolve={weather}>
+            <WeatherWidget />
+          </Await>
+        </React.Suspense>
       </React.Suspense>
     </Document>
   );
