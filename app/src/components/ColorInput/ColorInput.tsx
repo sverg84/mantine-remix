@@ -12,6 +12,7 @@ export default function ColorInput(props: Props) {
   return (
     <MantineColorInput
       aria-label="Color picker"
+      eyeDropperButtonProps={{ "aria-label": "Eye dropper" }}
       radius="lg"
       value={color}
       onChange={setColor}
