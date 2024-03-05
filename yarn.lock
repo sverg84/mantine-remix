@@ -2473,6 +2473,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vanilla-extract/sprinkles@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "@vanilla-extract/sprinkles@npm:1.6.1"
+  peerDependencies:
+    "@vanilla-extract/css": ^1.0.0
+  checksum: 10c0/7ddd2ab7c88b5740260e09aba5399d938d9a46142a0652842e8cd3fe34cd2fd2fbeb75060718bb44cb1a81dce280bb9955ae35defd89f7045e3a6822baf2b5ae
+  languageName: node
+  linkType: hard
+
 "@web3-storage/multipart-parser@npm:^1.0.0":
   version: 1.0.0
   resolution: "@web3-storage/multipart-parser@npm:1.0.0"
@@ -8959,6 +8968,7 @@ __metadata:
     "@types/react": "npm:^18.2.35"
     "@types/react-dom": "npm:^18.2.14"
     "@vanilla-extract/css": "npm:^1.14.1"
+    "@vanilla-extract/sprinkles": "npm:^1.6.1"
     date-fns: "npm:^3.3.1"
     eslint: "npm:^8.57.0"
     eslint-plugin-react: "npm:^7.33.2"

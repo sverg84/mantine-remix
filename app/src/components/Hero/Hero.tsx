@@ -4,7 +4,6 @@ import {
   Group,
   isLightColor,
   lighten,
-  Stack,
   Text,
   Title,
   Tooltip,
@@ -21,24 +20,27 @@ import useLocalStorageColor from "hooks/useLocalStorageColor";
 import * as styles from "./styles.css";
 
 const AMOUNT = 0.5;
+const LABEL =
+  "Cypress Cove at Point Lobos State Natural Reserve, Carmel-by-the-Sea, California";
 
-export default function Hero() {
+function useGradient() {
   const [color] = useLocalStorageColor();
 
   const shift = isLightColor(color) ? darken : lighten;
 
-  const gradient = { deg: 90, from: color, to: shift(color, AMOUNT) };
+  return { deg: 90, from: color, to: shift(color, AMOUNT) };
+}
+
+export default function Hero() {
+  const gradient = useGradient();
 
   const onClick = () => {
     const about = document.getElementById("about") as HTMLElement;
     window.scrollTo({ behavior: "smooth", top: about.offsetTop - 60 });
   };
 
-  const label =
-    "Cypress Cove at Point Lobos State Natural Reserve, Carmel-by-the-Sea, California";
-
   return (
-    <div aria-label={`Photo of ${label}`} className={styles.root} role="img">
+    <div aria-label={`Photo of ${LABEL}`} className={styles.root} role="img">
       <Container className={styles.inner} size="lg">
         <div className={styles.content}>
           <Title className={styles.title}>
@@ -68,7 +70,7 @@ export default function Hero() {
           </Group>
           <Tooltip
             className={styles.tooltip}
-            label={label}
+            label={LABEL}
             multiline={true}
             position="bottom"
           >
@@ -77,10 +79,8 @@ export default function Hero() {
         </div>
 
         <UnstyledButton className={styles.arrow} onClick={onClick}>
-          <Stack align="center" gap={0}>
-            Explore
-            <IconChevronDown className={styles.icon} size={36} />
-          </Stack>
+          Explore
+          <IconChevronDown className={styles.icon} size={36} />
         </UnstyledButton>
       </Container>
     </div>
