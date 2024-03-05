@@ -1,12 +1,12 @@
 import { isLightColor, Timeline } from "@mantine/core";
 import BodyCard from "components/BodyCard/BodyCard";
 import useExperienceTimelineItems from "hooks/useExperienceTimelineItems";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import ExperienceTimelineItem from "./ExperienceTimelineItem";
 
 export default function ExperienceCard() {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
   const items = useExperienceTimelineItems();
 
   return (

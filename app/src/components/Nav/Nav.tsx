@@ -29,7 +29,7 @@ import {
   IconNotification,
 } from "@tabler/icons-react";
 import MyName from "consts/MyName";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import ColorInput from "../ColorInput/ColorInput";
 import LatestPushTime from "../LatestPushTime/LatestPushTime";
@@ -77,7 +77,7 @@ export default function Nav() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={styles.subLink} key={item.title}>

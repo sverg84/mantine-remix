@@ -1,10 +1,10 @@
 import { IconFileDownload } from "@tabler/icons-react";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import ExternalLinkButton from "./ExternalLinkButton";
 
 export default function ResumeButton() {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
   return (
     <ExternalLinkButton
       Icon={IconFileDownload}

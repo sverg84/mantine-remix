@@ -1,5 +1,5 @@
 import { ColorInput as MantineColorInput } from "@mantine/core";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 type Props = Omit<
   React.ComponentProps<typeof MantineColorInput>,
@@ -7,7 +7,7 @@ type Props = Omit<
 >;
 
 export default function ColorInput(props: Props) {
-  const [color, setColor] = useLocalStorageOrLoaderColor();
+  const [color, setColor] = useLocalStorageColor();
 
   return (
     <MantineColorInput

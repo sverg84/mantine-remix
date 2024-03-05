@@ -20,7 +20,6 @@ import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
 import WeatherWidget from "components/WeatherWidget/WeatherWidget";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
-import type { LoaderData } from "types/LoaderData";
 
 export { default as loader } from "utils/coreLoader";
 
@@ -64,13 +63,8 @@ function Document({ children, title }: DocumentProps) {
   );
 }
 
-export async function clientLoader({
-  serverLoader,
-}: ClientLoaderFunctionArgs): Promise<LoaderData> {
-  const serverData: Jsonify<CoreLoaderData> = await serverLoader();
-
-  const color = localStorage.getItem("color") ?? "#fff";
-  return { color, server: serverData };
+export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
+  return await serverLoader();
 }
 
 clientLoader.hydrate = true;
@@ -84,9 +78,7 @@ export function HydrateFallback() {
 }
 
 export default function App() {
-  const {
-    server: { weather },
-  } = useLoaderData<LoaderData>();
+  const data = useLoaderData<Jsonify<CoreLoaderData>>();
   return (
     <Document>
       <React.Suspense fallback={<PageLoadFallback />}>
@@ -94,7 +86,7 @@ export default function App() {
           <Outlet />
         </Page>
         <React.Suspense fallback={null}>
-          <Await resolve={weather}>
+          <Await resolve={data.weather}>
             <WeatherWidget />
           </Await>
         </React.Suspense>

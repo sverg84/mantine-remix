@@ -10,7 +10,7 @@ import {
   IconBrandTypescript,
 } from "@tabler/icons-react";
 import BodyCard from "components/BodyCard/BodyCard";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import * as styles from "./styles.css";
 
@@ -83,7 +83,7 @@ const eek = [
 ];
 
 export default function SkillsCard() {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
   return (
     <BodyCard id="skills" title="Skills">
       <Accordion defaultValue="Apples" variant="filled">

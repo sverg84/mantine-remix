@@ -1,14 +1,14 @@
 import { AspectRatio, Grid, Group, Image, Text, Title } from "@mantine/core";
 import MyName from "consts/MyName";
 import { intervalToDuration } from "date-fns/intervalToDuration";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import * as styles from "./body.css";
 
 const BIRTHDATE: Date = new Date("1998-05-06T10:47:00.000-06:00"); // 6 May 1998 11:47 A.M. US Central Time
 
 function Language({ language }: { language: string }) {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
 
   return (
     <Text c={color} component="strong" fw="bold">
@@ -18,7 +18,7 @@ function Language({ language }: { language: string }) {
 }
 
 export default function AboutMeCardBody() {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
 
   const age = intervalToDuration({ end: new Date(), start: BIRTHDATE }).years;
 

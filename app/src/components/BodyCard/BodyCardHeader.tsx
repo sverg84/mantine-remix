@@ -1,12 +1,12 @@
 import { CardSection, rem, Title } from "@mantine/core";
-import useLocalStorageOrLoaderColor from "hooks/useLocalStorageOrLoaderColor";
+import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import * as styles from "./styles.css";
 
 type Props = Readonly<{ title: string }>;
 
 export default function BodyCardHeader({ title }: Props) {
-  const [color] = useLocalStorageOrLoaderColor();
+  const [color] = useLocalStorageColor();
 
   return (
     <CardSection
