@@ -3,6 +3,7 @@ import MyName from "consts/MyName";
 import { intervalToDuration } from "date-fns/intervalToDuration";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
 
+import sverg from "../../../static/sverg.webp";
 import * as styles from "./body.css";
 
 const BIRTHDATE: Date = new Date("1998-05-06T10:47:00.000-06:00"); // 6 May 1998 11:47 A.M. US Central Time
@@ -31,7 +32,7 @@ export default function AboutMeCardBody() {
               alt={`${MyName} in the tulip field`}
               loading="lazy"
               radius="md"
-              src="https://dv8qyiytu2cuu.cloudfront.net/sverg.webp"
+              src={sverg}
             />
           </AspectRatio>
         </Group>

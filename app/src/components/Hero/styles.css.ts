@@ -4,7 +4,7 @@ import { keyframes, style } from "@vanilla-extract/css";
 export const root = style({
   alignItems: "center",
   backgroundImage:
-    "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://dv8qyiytu2cuu.cloudfront.net/point_lobos.webp)",
+    "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(../../../static/point_lobos.webp)",
   backgroundPosition: "center",
   backgroundSize: "cover",
   display: "flex",
