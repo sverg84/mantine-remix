@@ -28,7 +28,10 @@ export const content = style({
       marginRight: 0,
     },
   },
+  display: "flex",
+  flexDirection: "column",
   marginRight: "calc(var(--mantine-spacing-xl) * 3)",
+  rowGap: rem(40),
 });
 
 export const title = style({
@@ -53,7 +56,6 @@ export const description = style({
     },
   },
   color: "var(--mantine-color-white)",
-  marginTop: rem(30),
   maxWidth: rem(500),
   opacity: 0.75,
 });
@@ -65,7 +67,6 @@ export const control = style({
     },
   },
   fontSize: rem(22),
-  marginTop: rem(40),
   paddingInline: rem(50),
 });
 
@@ -82,9 +83,20 @@ export const icon = style({
   animation: `${hop} 0.5s linear infinite alternate`,
 });
 
+export const credit = style({
+  alignSelf: "center",
+  color: "var(--mantine-color-white)",
+  textDecoration: "underline dotted",
+});
+
 export const arrow = style({
   bottom: 0,
   color: "var(--mantine-color-white)",
   left: "50%",
   position: "absolute",
+});
+
+export const tooltip = style({
+  textAlign: "center",
+  width: rem(240),
 });
