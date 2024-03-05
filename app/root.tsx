@@ -2,7 +2,7 @@ import "@mantine/core/styles.css";
 
 import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import {
   Await,
@@ -36,6 +36,10 @@ const theme = createTheme({
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ href: cssBundleHref, rel: "stylesheet" }] : []),
 ];
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
+});
 
 function Document({ children, title }: DocumentProps) {
   return (
