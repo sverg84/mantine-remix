@@ -8,10 +8,7 @@ type Props = Readonly<{
 
 export default function Page({ children }: Props) {
   return (
-    <AppShell
-      header={{ height: 60 }}
-      padding={{ base: "md", lg: "xl", sm: "lg" }}
-    >
+    <AppShell header={{ height: 60 }}>
       <Nav />
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
