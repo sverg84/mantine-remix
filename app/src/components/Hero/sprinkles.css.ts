@@ -39,9 +39,7 @@ const standardProperties = defineProperties({
   },
 });
 
-export const sprinkles = createSprinkles(
-  responsiveProperties,
-  standardProperties
-);
+const sprinkles = createSprinkles(responsiveProperties, standardProperties);
 
 export type Sprinkles = Parameters<typeof sprinkles>[0];
+export default sprinkles;
