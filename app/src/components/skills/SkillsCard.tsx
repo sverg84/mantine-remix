@@ -29,6 +29,7 @@ import {
 } from "@tabler/icons-react";
 import BodyCard from "components/BodyCard/BodyCard";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
+import { memo } from "react";
 
 import * as styles from "./styles.css";
 
@@ -69,7 +70,7 @@ const skillsByType = [
   },
 ];
 
-export default function SkillsCard() {
+const SkillsCard = memo(function SkillsCard() {
   const [color] = useLocalStorageColor();
   return (
     <BodyCard id="skills" title="Skills">
@@ -106,4 +107,6 @@ export default function SkillsCard() {
       </Flex>
     </BodyCard>
   );
-}
+});
+
+export default SkillsCard;
