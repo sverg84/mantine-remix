@@ -1,11 +1,12 @@
 import { Image, Text, Title, Tooltip } from "@mantine/core";
 import { useAsyncValue } from "@remix-run/react";
+import { memo } from "react";
 import type { WeatherData } from "types/WeatherData";
 
 import * as styles from "./styles.css";
 import widget from "./weather.css";
 
-export default function WeatherWidget() {
+const WeatherWidget = memo(function WeatherWidget() {
   const weather = useAsyncValue() as WeatherData;
 
   const {
@@ -38,4 +39,6 @@ export default function WeatherWidget() {
       </Text>
     </figure>
   );
-}
+});
+
+export default WeatherWidget;

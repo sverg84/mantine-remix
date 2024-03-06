@@ -16,6 +16,7 @@ import LinkedInButton from "components/buttons/LinkedInButton";
 import ResumeButton from "components/buttons/ResumeButton";
 import MyName from "consts/MyName";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
+import { memo } from "react";
 
 import * as styles from "./styles.css";
 
@@ -31,7 +32,7 @@ function useGradient() {
   return { deg: 90, from: color, to: shift(color, AMOUNT) };
 }
 
-export default function Hero() {
+const Hero = memo(function Hero() {
   const gradient = useGradient();
 
   const onClick = () => {
@@ -85,4 +86,6 @@ export default function Hero() {
       </Container>
     </div>
   );
-}
+});
+
+export default Hero;
