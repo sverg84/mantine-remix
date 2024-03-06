@@ -14,15 +14,13 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <>
-      <Stack gap="xl">
-        <Hero />
-        <Stack component={List} gap="xl">
-          <AboutMeCard />
-          <ExperienceCard />
-          <SkillsCard />
-        </Stack>
+    <Stack gap="xl">
+      <Hero />
+      <Stack component={List} gap="xl">
+        <AboutMeCard />
+        <ExperienceCard />
+        <SkillsCard />
       </Stack>
-    </>
+    </Stack>
   );
 }

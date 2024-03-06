@@ -4,8 +4,8 @@ import {
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
-import { useState } from "react";
 
 export default function ColorSchemeSwitch() {
   const theme = useMantineTheme();
@@ -13,10 +13,12 @@ export default function ColorSchemeSwitch() {
     keepTransitions: true,
   });
 
-  const [checked, setChecked] = useState<boolean>(colorScheme === "dark");
+  const [checked, { toggle: toggleChecked }] = useDisclosure(
+    colorScheme === "dark"
+  );
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.currentTarget.checked);
+  const onChange = () => {
+    toggleChecked();
     toggleColorScheme();
   };
 
