@@ -1,84 +1,71 @@
-import { Accordion, isLightColor, ThemeIcon } from "@mantine/core";
 import {
+  Flex,
+  isLightColor,
+  List,
+  Stack,
+  ThemeIcon,
+  Title,
+} from "@mantine/core";
+import {
+  IconBrandAws,
+  IconBrandChrome,
   IconBrandCpp,
   IconBrandCSharp,
+  IconBrandCss3,
   IconBrandGraphql,
+  IconBrandHtml5,
+  IconBrandJavascript,
+  IconBrandMantine,
   IconBrandMysql,
+  IconBrandNodejs,
   IconBrandPhp,
   IconBrandPython,
   IconBrandReact,
+  IconBrandSass,
   IconBrandTypescript,
+  IconGitCommit,
+  IconServer2,
+  IconSql,
 } from "@tabler/icons-react";
 import BodyCard from "components/BodyCard/BodyCard";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
 
 import * as styles from "./styles.css";
 
-const eek = [
+const skillsByType = [
   {
-    description: `Ramped up on React skills while transitioning from web infra (PHP) to
-          UI programming in my full-time position at Meta. Developed an
-          expertise in applying Hooks, code-splitting APIs, and React18
-          concurrency features to create seamless user experiences while
-          optimizing app/page performance. Expanding upon Meta-internal skills
-          with public React app building (e.g., this web page!).`,
-    icon: IconBrandReact,
-    value: "React",
+    skills: [
+      { icon: IconBrandJavascript, value: "JavaScript" },
+      { icon: IconBrandPhp, value: "PHP/Hack" },
+      { icon: IconBrandHtml5, value: "HTML" },
+      { icon: IconBrandCss3, value: "CSS" },
+      { icon: IconBrandGraphql, value: "GraphQL" },
+      { icon: IconSql, value: "SQL" },
+      { icon: IconBrandPython, value: "Python" },
+      { icon: IconBrandCpp, value: "C++" },
+      { icon: IconBrandCSharp, value: "C#" },
+    ],
+    title: "Languages",
   },
   {
-    description: `Self-taught during the summer of 2023 in order to create a modern
-          React app at home while still enforcing type safety. Very similar to
-          Meta's "Flow" but with broader appeal.`,
-    icon: IconBrandTypescript,
-    value: "TypeScript",
+    skills: [
+      { icon: IconBrandReact, value: "React" },
+      { icon: IconBrandTypescript, value: "TypeScript" },
+      { icon: IconBrandMysql, value: "MySQL" },
+      { icon: IconBrandSass, value: "Sass" },
+      { icon: IconServer2, value: "Remix" },
+      { icon: IconBrandNodejs, value: "Node" },
+      { icon: IconBrandMantine, value: "Mantine" },
+    ],
+    title: "Frameworks + Extensions",
   },
   {
-    description: `First programming language learned while working full-time at Meta.
-          Built multiple scalable features by focusing on asynchronous
-          programming. Moved to implementing GraphQL queries and mutations on
-          the server side in addition to server-calling React routes and their
-          corresponding components.`,
-    icon: IconBrandPhp,
-    value: "Hack",
-  },
-  {
-    description: `Learned back-end GraphQL field implementation skills while learning
-          Hack, and gained client-side GraphQL experience in tandem with coding
-          in React while full-time at Meta.`,
-    icon: IconBrandGraphql,
-    value: "GraphQL",
-  },
-  {
-    description: `Database management skills applied during both the internship and
-          full-time Meta experiences. MySQL queries created for mass aggregates
-          of traffic data in C++/Python, queries and mutations optimized for
-          employee directory information in Hack.`,
-    icon: IconBrandMysql,
-    value: "MySQL",
-  },
-  {
-    description: `First applied in class projects around web development (e.g., Flask,
-          Jinja, REST) while at the University of Michigan, later used to create
-          data pipeline jobs for traffic aggregation as an intern at Meta.
-          Presently, using FastAPI and PostgreSQL for personal projects.`,
-    icon: IconBrandPython,
-    value: "Python",
-  },
-  {
-    description: `First programming language learned as an undergraduate at the
-          University of Michigan. Used for package building and app compression
-          while coding as a Meta intern. Skills in asynchronous programming
-          (e.g., threads, mutexes, semaphores, etc.) and file system management
-          as part of a course on operating systems.`,
-    icon: IconBrandCpp,
-    value: "C++",
-  },
-  {
-    description: `Onboarded as part of university senior capstone project at Michigan.
-          Gained experience in C# in order to create a video game as part of a
-          team of four (4) using the Unity game engine.`,
-    icon: IconBrandCSharp,
-    value: "C#",
+    skills: [
+      { icon: IconGitCommit, value: "Git" },
+      { icon: IconBrandChrome, value: "Chrome DevTools" },
+      { icon: IconBrandAws, value: "AWS" },
+    ],
+    title: "Tools",
   },
 ];
 
@@ -86,29 +73,37 @@ export default function SkillsCard() {
   const [color] = useLocalStorageColor();
   return (
     <BodyCard id="skills" title="Skills">
-      <Accordion defaultValue="Apples" variant="filled">
-        {eek.map((item) => (
-          <Accordion.Item
-            className={styles.item}
-            key={item.value}
-            value={item.value}
-          >
-            <Accordion.Control
-              icon={
-                <ThemeIcon color={color} radius="lg" size={34} variant="filled">
-                  <item.icon
-                    color={isLightColor(color) ? "black" : "white"}
-                    size={22}
-                  />
-                </ThemeIcon>
-              }
-            >
-              {item.value}
-            </Accordion.Control>
-            <Accordion.Panel>{item.description}</Accordion.Panel>
-          </Accordion.Item>
+      <Flex className={styles.container}>
+        {skillsByType.map(({ skills, title }) => (
+          <Stack key={title}>
+            <Title className={styles.title} order={2} size="h3">
+              {title}
+            </Title>
+            <List spacing="md">
+              {skills.map((item) => (
+                <List.Item
+                  icon={
+                    <ThemeIcon
+                      color={color}
+                      radius="lg"
+                      size={34}
+                      variant="filled"
+                    >
+                      <item.icon
+                        color={isLightColor(color) ? "black" : "white"}
+                        size={22}
+                      />
+                    </ThemeIcon>
+                  }
+                  key={item.value}
+                >
+                  {item.value}
+                </List.Item>
+              ))}
+            </List>
+          </Stack>
         ))}
-      </Accordion>
+      </Flex>
     </BodyCard>
   );
 }
