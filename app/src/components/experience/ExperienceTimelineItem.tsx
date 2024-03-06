@@ -1,5 +1,9 @@
 import { Badge, Flex, Group, Stack, Text } from "@mantine/core";
+import { Link } from "@remix-run/react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import type { Item as TimelineItem } from "hooks/useExperienceTimelineItems";
+
+import * as styles from "./badge.css";
 
 type Props = Readonly<{ item: TimelineItem }>;
 
@@ -7,6 +11,7 @@ export default function ExperienceTimelineItem({
   item: {
     badge: { color, label, variant },
     description,
+    href,
     skillsList,
     timeframe,
     title,
@@ -23,7 +28,15 @@ export default function ExperienceTimelineItem({
       >
         <Text>{title}</Text>
         <Group>
-          <Badge color={color} variant={variant}>
+          <Badge
+            className={styles.badge}
+            color={color}
+            component={Link}
+            rightSection={<IconArrowUpRight size={16} />}
+            target="_blank"
+            to={href}
+            variant={variant}
+          >
             {label}
           </Badge>
           <Text size="xs">({timeframe})</Text>

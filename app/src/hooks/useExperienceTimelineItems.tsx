@@ -18,6 +18,7 @@ export type Item = Readonly<{
   Icon: (props: TablerIconsProps) => React.JSX.Element;
   badge: Badge;
   description: JSX.Element;
+  href: string;
   id: string;
   skillsList: Array<string>;
   timeframe: string;
@@ -48,6 +49,7 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
           performance optimization opportunities.
         </>
       ),
+      href: "https://about.meta.com/",
       id: "meta_swe",
       skillsList: ["PHP", "React", "GraphQL", "MySQL"],
       timeframe: "2020-2023",
@@ -64,6 +66,7 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
           packet failures with interactive web page.
         </>
       ),
+      href: "https://about.meta.com/",
       id: "meta_intern",
       skillsList: ["C++", "Python", "Apache Thrift", "MySQL"],
       timeframe: "Summer 2019",
@@ -92,6 +95,7 @@ export default function useExperienceTimelineItems(): ReadonlyArray<Item> {
           study for Defence Research & Development Canada (DRDC).
         </>
       ),
+      href: "https://www.umtri.umich.edu/",
       id: "umich_urop",
       skillsList: ["MATLAB", "Wolfram Mathematica"],
       timeframe: "2016-2017",
