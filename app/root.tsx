@@ -17,11 +17,14 @@ import {
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
 import Page from "components/Page/Page";
 import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
-import WeatherWidget from "components/WeatherWidget/WeatherWidget";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
 
 export { default as loader } from "utils/coreLoader";
+
+const WeatherWidget = React.lazy(
+  () => import("components/WeatherWidget/WeatherWidget")
+);
 
 interface DocumentProps {
   children: React.ReactNode;

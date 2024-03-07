@@ -28,9 +28,7 @@ type Props = Readonly<{
 }>;
 
 export default function LatestPushTime({ zIndex = 300 }: Props) {
-  const {
-    server: { updateTime },
-  } = useAppLoaderData();
+  const { updateTime } = useAppLoaderData();
 
   const updateTimeAsDate = new Date(updateTime);
   const timeSinceLastUpdate = updateTimeAsDate.getTime() - new Date().getTime();

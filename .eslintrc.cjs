@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "simple-import-sort"],
   rules: {
+    "@typescript-eslint/no-explicit-any": "off",
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": "error",
     "sort-keys": "warn",

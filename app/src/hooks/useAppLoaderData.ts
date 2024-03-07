@@ -1,9 +1,9 @@
 import { useRouteLoaderData } from "@remix-run/react";
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
-import type { LoaderData } from "types/LoaderData";
+import type { CoreLoaderData } from "types/CoreLoaderData";
 
 export default function useAppLoaderData() {
-  return useRouteLoaderData<LoaderData>("root") as NonNullable<
-    Jsonify<LoaderData>
+  return useRouteLoaderData<CoreLoaderData>("root") as NonNullable<
+    Jsonify<CoreLoaderData>
   >;
 }

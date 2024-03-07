@@ -5,100 +5,48 @@ import {
   Burger,
   Button,
   Center,
-  Collapse,
   Divider,
-  Drawer,
   Group,
   HoverCard,
   rem,
   SimpleGrid,
   Text,
-  ThemeIcon,
-  UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "@remix-run/react";
-import {
-  IconBook,
-  IconBrandReact,
-  IconChartPie3,
-  IconChevronDown,
-  IconCode,
-  IconCoin,
-  IconFingerprint,
-  IconNotification,
-} from "@tabler/icons-react";
+import { IconBrandReact, IconChevronDown } from "@tabler/icons-react";
 import MyName from "consts/MyName";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
+import { lazy, Suspense, useEffect } from "react";
 
 import ColorInput from "../ColorInput/ColorInput";
-import LatestPushTime from "../LatestPushTime/LatestPushTime";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
+import NavLinks from "./NavLinks";
 import * as styles from "./styles.css";
 
-const DRAWER_ZINDEX = 1000000;
+const preload = () => {
+  return import("./NavDrawer");
+};
 
-const mockdata = [
-  {
-    description: "This Pokémon’s cry is very loud and distracting",
-    icon: IconCode,
-    title: "Open source",
-  },
-  {
-    description: "The fluid of Smeargle’s tail secretions changes",
-    icon: IconCoin,
-    title: "Free for everyone",
-  },
-  {
-    description: "Yanma is capable of seeing 360 degrees without",
-    icon: IconBook,
-    title: "Documentation",
-  },
-  {
-    description: "The shell’s rounded shape and the grooves on its.",
-    icon: IconFingerprint,
-    title: "Security",
-  },
-  {
-    description: "This Pokémon uses its flying ability to quickly chase",
-    icon: IconChartPie3,
-    title: "Analytics",
-  },
-  {
-    description: "Combusken battles with the intensely hot flames it spews",
-    icon: IconNotification,
-    title: "Notifications",
-  },
-];
+const NavDrawer = lazy(preload);
 
 const REACT_COLOR = "#149eca";
+
+function Fallback() {
+  useEffect(() => {
+    console.log("suspense");
+    return () => {
+      console.log("unmount");
+    };
+  }, []);
+
+  return null;
+}
 
 export default function Nav() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
-  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const [color] = useLocalStorageColor();
-
-  const links = mockdata.map((item) => (
-    <UnstyledButton className={styles.subLink} key={item.title}>
-      <Group align="flex-start" wrap="nowrap">
-        <ThemeIcon radius="md" size={34} variant="default">
-          <item.icon
-            color={color}
-            style={{ height: rem(22), width: rem(22) }}
-          />
-        </ThemeIcon>
-        <div>
-          <Text fw={500} size="sm">
-            {item.title}
-          </Text>
-          <Text c="dimmed" size="xs">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
-  ));
 
   return (
     <AppShellHeader px="var(--mantine-spacing-md)">
@@ -145,7 +93,7 @@ export default function Nav() {
               <Divider my="sm" />
 
               <SimpleGrid cols={2} spacing={0}>
-                {links}
+                <NavLinks />
               </SimpleGrid>
 
               <div className={styles.dropdownFooter}>
@@ -179,51 +127,14 @@ export default function Nav() {
             hiddenFrom="sm"
             opened={drawerOpened}
             onClick={toggleDrawer}
+            onMouseEnter={preload}
           />
         </Group>
       </Group>
 
-      <Drawer
-        hiddenFrom="sm"
-        opened={drawerOpened}
-        padding="md"
-        size="50%"
-        title={MyName}
-        zIndex={DRAWER_ZINDEX}
-        onClose={closeDrawer}
-      >
-        <Divider />
-
-        <Link className={styles.link} to="/">
-          Home
-        </Link>
-        <UnstyledButton className={styles.link} onClick={toggleLinks}>
-          <Center inline>
-            <Box component="span" mr={5}>
-              Features
-            </Box>
-            <IconChevronDown
-              color={color}
-              style={{ height: rem(16), width: rem(16) }}
-            />
-          </Center>
-        </UnstyledButton>
-        <Collapse in={linksOpened}>{links}</Collapse>
-        <Link className={styles.link} to="/">
-          Learn
-        </Link>
-        <Link className={styles.link} to="/">
-          Academy
-        </Link>
-
-        <Divider mb="sm" />
-
-        <ColorInput popoverProps={{ zIndex: DRAWER_ZINDEX }} />
-
-        <Box bottom={0} left="25%" mb="xl" pos="fixed">
-          <LatestPushTime zIndex={DRAWER_ZINDEX} />
-        </Box>
-      </Drawer>
+      <Suspense fallback={<Fallback />}>
+        <NavDrawer opened={drawerOpened} onClose={closeDrawer} />
+      </Suspense>
     </AppShellHeader>
   );
 }
