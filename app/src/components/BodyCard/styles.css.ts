@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 
 export const header = style({
-  "@media": {
+  selectors: {
     [vars.darkSelector]: {
       backgroundColor: vars.colors.dark[5],
     },

@@ -1,7 +1,7 @@
 import { rem } from "@mantine/core";
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 
 const color = {
   "mantine-white": vars.colors.white,

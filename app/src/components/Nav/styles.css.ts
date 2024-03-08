@@ -1,7 +1,7 @@
 import { rem } from "@mantine/core";
 import { style } from "@vanilla-extract/css";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 
 export { link } from "./link.css";
 
@@ -10,7 +10,7 @@ export const react = style({
 });
 
 export const home = style({
-  "@media": {
+  selectors: {
     [vars.darkSelector]: {
       color: vars.colors.white,
     },
@@ -22,7 +22,13 @@ export const home = style({
 });
 
 export const dropdownFooter = style({
-  "@media": {
+  borderTopStyle: "solid",
+  borderTopWidth: rem(1),
+  margin: `calc(${vars.spacing.md} * -1)`,
+  marginTop: vars.spacing.sm,
+  padding: `${vars.spacing.md} calc(${vars.spacing.md} * 2)`,
+  paddingBottom: vars.spacing.lg,
+  selectors: {
     [vars.darkSelector]: {
       backgroundColor: vars.colors.dark[7],
       borderTopColor: vars.colors.dark[5],
@@ -32,10 +38,4 @@ export const dropdownFooter = style({
       borderTopColor: vars.colors.gray[1],
     },
   },
-  borderTopStyle: "solid",
-  borderTopWidth: rem(1),
-  margin: `calc(${vars.spacing.md} * -1)`,
-  marginTop: vars.spacing.sm,
-  padding: `${vars.spacing.md} calc(${vars.spacing.md} * 2)`,
-  paddingBottom: vars.spacing.lg,
 });

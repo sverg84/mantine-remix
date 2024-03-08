@@ -4,6 +4,7 @@ import { loadIcons } from "@iconify/react";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
+import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import {
   Await,
   Links,
@@ -21,7 +22,7 @@ import MyName from "consts/MyName";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
 
-import { theme } from "./theme.css";
+import { theme } from "./theme";
 export { default as loader } from "utils/coreLoader";
 
 const WeatherWidget = React.lazy(
@@ -42,6 +43,20 @@ export const links: LinksFunction = () => [
 export const headers: HeadersFunction = () => ({
   "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
 });
+
+export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
+  return await serverLoader();
+}
+
+clientLoader.hydrate = true;
+
+export function HydrateFallback() {
+  return (
+    <Document title="Loading...">
+      <PageLoadFallback />
+    </Document>
+  );
+}
 
 function Document({ children, title }: DocumentProps) {
   loadIcons([

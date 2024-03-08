@@ -1,7 +1,7 @@
 import { rem } from "@mantine/core";
 import { keyframes, style } from "@vanilla-extract/css";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 import sprinkles from "./sprinkles.css";
 
 export const root = style([

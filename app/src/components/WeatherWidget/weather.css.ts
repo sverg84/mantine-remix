@@ -2,7 +2,7 @@ import type { ComplexStyleRule } from "@vanilla-extract/css";
 import { keyframes } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 
 const fadeInRight = keyframes({
   "0%": {

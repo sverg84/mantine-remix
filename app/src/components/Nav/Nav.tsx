@@ -17,9 +17,9 @@ import { Link } from "@remix-run/react";
 import { IconBrandReact, IconChevronDown } from "@tabler/icons-react";
 import MyName from "consts/MyName";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 
-import { vars } from "../../../theme.css";
+import { vars } from "../../../theme";
 import ColorInput from "../ColorInput/ColorInput";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import NavLinks from "./NavLinks";
@@ -32,17 +32,6 @@ const preload = () => {
 const NavDrawer = lazy(preload);
 
 const REACT_COLOR = "#149eca";
-
-function Fallback() {
-  useEffect(() => {
-    console.log("suspense");
-    return () => {
-      console.log("unmount");
-    };
-  }, []);
-
-  return null;
-}
 
 export default function Nav() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -133,7 +122,7 @@ export default function Nav() {
         </Group>
       </Group>
 
-      <Suspense fallback={<Fallback />}>
+      <Suspense fallback={null}>
         <NavDrawer opened={drawerOpened} onClose={closeDrawer} />
       </Suspense>
     </AppShellHeader>
