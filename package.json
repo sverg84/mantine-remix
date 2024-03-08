@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@remix-run/dev": "^2.7.2",
     "@remix-run/eslint-config": "^2.7.2",
     "@testing-library/jest-dom": "^6.4.2",

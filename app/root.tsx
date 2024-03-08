@@ -1,5 +1,6 @@
 import "@mantine/core/styles.css";
 
+import { loadIcons } from "@iconify/react";
 import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
@@ -20,7 +21,6 @@ import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
 import MyName from "consts/MyName";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
-
 export { default as loader } from "utils/coreLoader";
 
 const WeatherWidget = React.lazy(
@@ -47,6 +47,11 @@ export const headers: HeadersFunction = () => ({
 });
 
 function Document({ children, title }: DocumentProps) {
+  loadIcons([
+    "ri:remix-run-line",
+    "fluent-emoji-high-contrast:cupcake",
+    "simple-icons:sst",
+  ]);
   return (
     <html lang="en">
       <head>

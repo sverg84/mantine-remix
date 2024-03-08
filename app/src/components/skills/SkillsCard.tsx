@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import {
   Flex,
   isLightColor,
@@ -23,8 +24,7 @@ import {
   IconBrandReact,
   IconBrandSass,
   IconBrandTypescript,
-  IconGitCommit,
-  IconServer2,
+  IconGitMerge,
   IconSql,
 } from "@tabler/icons-react";
 import BodyCard from "components/BodyCard/BodyCard";
@@ -54,21 +54,28 @@ const skillsByType = [
       { icon: IconBrandTypescript, value: "TypeScript" },
       { icon: IconBrandMysql, value: "MySQL" },
       { icon: IconBrandSass, value: "Sass" },
-      { icon: IconServer2, value: "Remix" },
+      { iconify: "ri:remix-run-line", value: "Remix" },
       { icon: IconBrandNodejs, value: "Node" },
       { icon: IconBrandMantine, value: "Mantine" },
+      {
+        iconify: "fluent-emoji-high-contrast:cupcake",
+        value: "Vanilla Extract",
+      },
     ],
     title: "Frameworks + Extensions",
   },
   {
     skills: [
-      { icon: IconGitCommit, value: "Git" },
+      { icon: IconGitMerge, value: "Git" },
       { icon: IconBrandChrome, value: "Chrome DevTools" },
       { icon: IconBrandAws, value: "AWS" },
+      { iconify: "simple-icons:sst", value: "SST" },
     ],
     title: "Tools",
   },
 ];
+
+const ICON_SIZE = 22;
 
 const SkillsCard = memo(function SkillsCard() {
   const [color] = useLocalStorageColor();
@@ -81,26 +88,36 @@ const SkillsCard = memo(function SkillsCard() {
               {title}
             </Title>
             <List spacing="md">
-              {skills.map((item) => (
-                <List.Item
-                  icon={
-                    <ThemeIcon
-                      color={color}
-                      radius="lg"
-                      size={34}
-                      variant="filled"
-                    >
-                      <item.icon
-                        color={isLightColor(color) ? "black" : "white"}
-                        size={22}
-                      />
-                    </ThemeIcon>
-                  }
-                  key={item.value}
-                >
-                  {item.value}
-                </List.Item>
-              ))}
+              {skills.map((item) => {
+                const iconColor = isLightColor(color) ? "black" : "white";
+                return (
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color={color}
+                        radius="lg"
+                        size={34}
+                        variant="filled"
+                      >
+                        {item.iconify != null ? (
+                          <Icon
+                            color={iconColor}
+                            height={ICON_SIZE}
+                            icon={item.iconify}
+                            strokeWidth={2}
+                            width={ICON_SIZE}
+                          />
+                        ) : (
+                          <item.icon color={iconColor} size={ICON_SIZE} />
+                        )}
+                      </ThemeIcon>
+                    }
+                    key={item.value}
+                  >
+                    {item.value}
+                  </List.Item>
+                );
+              })}
             </List>
           </Stack>
         ))}
