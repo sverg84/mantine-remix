@@ -12,8 +12,9 @@
     "sst:dev": "sst dev"
   },
   "dependencies": {
-    "@mantine/core": "7.6.0",
-    "@mantine/hooks": "7.6.0",
+    "@mantine/core": "^7.6.1",
+    "@mantine/hooks": "^7.6.1",
+    "@mantine/vanilla-extract": "^7.6.1",
     "@remix-run/css-bundle": "^2.7.2",
     "@remix-run/node": "^2.7.2",
     "@remix-run/react": "^2.7.2",

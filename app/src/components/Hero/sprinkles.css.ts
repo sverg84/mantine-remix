@@ -1,22 +1,24 @@
 import { rem } from "@mantine/core";
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 
+import { vars } from "../../../theme.css";
+
 const color = {
-  "mantine-white": "var(--mantine-color-white)",
+  "mantine-white": vars.colors.white,
 };
 
 const marginRight = {
   none: 0,
-  xxxl: "calc(var(--mantine-spacing-xl) * 3)",
+  xxxl: `calc(${vars.spacing.xl} * 3)`,
 };
 
 const responsiveProperties = defineProperties({
   conditions: {
     large: {
-      "@media": "screen and (min-width: 62em)",
+      "@media": `screen and ${vars.largerThan("sm")}`,
     },
     small: {
-      "@media": "screen and (max-width: 62em)",
+      "@media": `screen and ${vars.smallerThan("sm")}`,
     },
   },
   defaultCondition: "small",

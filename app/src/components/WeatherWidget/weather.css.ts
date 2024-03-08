@@ -2,6 +2,8 @@ import type { ComplexStyleRule } from "@vanilla-extract/css";
 import { keyframes } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
+import { vars } from "../../../theme.css";
+
 const fadeInRight = keyframes({
   "0%": {
     opacity: "0",
@@ -16,10 +18,10 @@ const fadeInRight = keyframes({
 const base: ComplexStyleRule = {
   alignItems: "center",
   animation: `${fadeInRight} 1s`,
-  borderRadius: "var(--mantine-radius-lg)",
+  borderRadius: vars.radius.lg,
   bottom: 0,
-  boxShadow: "var(--mantine-shadow-lg)",
-  color: "var(--mantine-color-white)",
+  boxShadow: vars.shadows.lg,
+  color: vars.colors.white,
   display: "flex",
   flexDirection: "column",
   padding: "0.5em",

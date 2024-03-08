@@ -1,10 +1,12 @@
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const button = style({
   "@media": {
-    "(max-width: 62em)": {
+    [vars.smallerThan("md")]: {
       flexGrow: 1,
     },
   },
-  borderRadius: "var(--mantine-radius-xl)",
+  borderRadius: vars.radius.xl,
 });

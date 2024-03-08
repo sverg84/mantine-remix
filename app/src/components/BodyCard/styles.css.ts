@@ -1,6 +1,14 @@
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const header = style({
-  backgroundColor:
-    "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5))",
+  "@media": {
+    [vars.darkSelector]: {
+      backgroundColor: vars.colors.dark[5],
+    },
+    [vars.lightSelector]: {
+      backgroundColor: vars.colors.gray[0],
+    },
+  },
 });

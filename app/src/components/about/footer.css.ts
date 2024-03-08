@@ -1,6 +1,8 @@
 import { rem } from "@mantine/core";
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const col = style({
   alignItems: "center",
   columnGap: rem(8),
@@ -9,6 +11,12 @@ export const col = style({
 });
 
 export const footer = style({
-  backgroundColor:
-    "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7))",
+  "@media": {
+    [vars.darkSelector]: {
+      backgroundColor: vars.colors.dark[7],
+    },
+    [vars.lightSelector]: {
+      backgroundColor: vars.colors.gray[0],
+    },
+  },
 });

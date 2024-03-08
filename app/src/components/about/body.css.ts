@@ -1,5 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const image = style({
   flex: "0 0 100%",
 });
@@ -10,7 +12,7 @@ export const imageCol = style({
 
 export const line = style({
   "@media": {
-    "(max-width: 62em)": {
+    [vars.smallerThan("md")]: {
       textAlign: "center",
     },
   },

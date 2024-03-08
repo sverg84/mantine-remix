@@ -1,23 +1,32 @@
 import { rem } from "@mantine/core";
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const link = style({
-  ":hover": {
-    backgroundColor:
-      "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6))",
-  },
   "@media": {
-    "(max-width: 48em)": {
+    [vars.smallerThan("sm")]: {
       height: rem(42),
       width: "100%",
     },
+    [vars.darkSelector]: {
+      ":hover": {
+        backgroundColor: vars.colors.dark[6],
+      },
+      color: vars.colors.white,
+    },
+    [vars.lightSelector]: {
+      ":hover": {
+        backgroundColor: vars.colors.gray[0],
+      },
+      color: vars.colors.black,
+    },
   },
   alignItems: "center",
-  color: "light-dark(var(--mantine-color-black), var(--mantine-color-white))",
   display: "flex",
-  fontSize: "var(--mantine-font-size-sm)",
+  fontSize: vars.fontSizes.sm,
   fontWeight: 500,
   height: "100%",
-  paddingInline: "var(--mantine-spacing-md)",
+  paddingInline: vars.spacing.md,
   textDecoration: "none",
 });

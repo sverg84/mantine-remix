@@ -1,19 +1,21 @@
 import { style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
+
 export const container = style({
   "@media": {
-    "screen and (max-width: 48em)": {
+    [`screen and ${vars.smallerThan("sm")}`]: {
       flexDirection: "column",
     },
   },
   flexDirection: "row",
   justifyContent: "space-between",
-  rowGap: "var(--mantine-spacing-lg)",
+  rowGap: vars.spacing.lg,
 });
 
 export const title = style({
   "@media": {
-    "screen and (max-width: 48em)": {
+    [`screen and ${vars.smallerThan("sm")}`]: {
       textAlign: "center",
     },
   },

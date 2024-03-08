@@ -1,6 +1,7 @@
 import { rem } from "@mantine/core";
 import { keyframes, style } from "@vanilla-extract/css";
 
+import { vars } from "../../../theme.css";
 import sprinkles from "./sprinkles.css";
 
 export const root = style([
@@ -21,7 +22,7 @@ export const inner = style([
   }),
   {
     justifyContent: "space-between",
-    marginInline: "var(--mantine-spacing-md)",
+    marginInline: vars.spacing.md,
   },
 ]);
 

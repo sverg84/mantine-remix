@@ -19,6 +19,7 @@ import MyName from "consts/MyName";
 import useLocalStorageColor from "hooks/useLocalStorageColor";
 import { lazy, Suspense, useEffect } from "react";
 
+import { vars } from "../../../theme.css";
 import ColorInput from "../ColorInput/ColorInput";
 import ColorSchemeSwitch from "./ColorSchemeSwitch";
 import NavLinks from "./NavLinks";
@@ -49,7 +50,7 @@ export default function Nav() {
   const [color] = useLocalStorageColor();
 
   return (
-    <AppShellHeader px="var(--mantine-spacing-md)">
+    <AppShellHeader px={vars.spacing.md}>
       <Group h="100%" justify="space-between" wrap="nowrap">
         <Group gap={8} wrap="nowrap">
           <Link aria-label="Home page icon link" to="/">

@@ -1,10 +1,9 @@
 import "@mantine/core/styles.css";
 
 import { loadIcons } from "@iconify/react";
-import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
-import type { ClientLoaderFunctionArgs } from "@remix-run/react";
 import {
   Await,
   Links,
@@ -21,6 +20,8 @@ import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
 import MyName from "consts/MyName";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
+
+import { theme } from "./theme.css";
 export { default as loader } from "utils/coreLoader";
 
 const WeatherWidget = React.lazy(
@@ -31,10 +32,6 @@ interface DocumentProps {
   children: React.ReactNode;
   title?: string;
 }
-
-const theme = createTheme({
-  cursorType: "pointer",
-});
 
 const keywords: string = [MyName, "UI", "UX"].join(" ");
 
@@ -53,7 +50,7 @@ function Document({ children, title }: DocumentProps) {
     "simple-icons:sst",
   ]);
   return (
-    <html lang="en">
+    <html data-mantine-color-scheme="dark" lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -61,10 +58,10 @@ function Document({ children, title }: DocumentProps) {
         <Meta />
         <meta content={keywords} name="keywords" />
         <Links />
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
-        <MantineProvider theme={theme}>
+        <MantineProvider defaultColorScheme="auto" theme={theme}>
           {children}
           <ScrollRestoration />
           <Scripts />
@@ -72,20 +69,6 @@ function Document({ children, title }: DocumentProps) {
         </MantineProvider>
       </body>
     </html>
-  );
-}
-
-export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
-  return await serverLoader();
-}
-
-clientLoader.hydrate = true;
-
-export function HydrateFallback() {
-  return (
-    <Document title="Loading...">
-      <PageLoadFallback />
-    </Document>
   );
 }
 
