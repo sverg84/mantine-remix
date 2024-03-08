@@ -4,11 +4,14 @@ import AboutMeCard from "components/about/AboutMeCard";
 import ExperienceCard from "components/experience/ExperienceCard";
 import Hero from "components/Hero/Hero";
 import SkillsCard from "components/skills/SkillsCard";
+import MyName from "consts/MyName";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Mantine Remix App" },
-    { content: "Welcome to Mantine!", name: "description" },
+    {
+      content: `Hi! I'm ${MyName}, a UI/UX Engineer. I am an ex-Meta Web developer with a knack for building accessible, mobile-first user experiences. An aspiring user experience designer with an eagerness to learn!`,
+      name: "description",
+    },
   ];
 };
 

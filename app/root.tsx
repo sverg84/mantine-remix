@@ -17,6 +17,7 @@ import {
 import type { Jsonify } from "@remix-run/server-runtime/dist/jsonify";
 import Page from "components/Page/Page";
 import PageLoadFallback from "components/PageLoadFallback/PageLoadFallback";
+import MyName from "consts/MyName";
 import * as React from "react";
 import type { CoreLoaderData } from "types/CoreLoaderData";
 
@@ -35,6 +36,8 @@ const theme = createTheme({
   cursorType: "pointer",
 });
 
+const keywords: string = [MyName, "UI", "UX"].join(" ");
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ href: cssBundleHref, rel: "stylesheet" }] : []),
 ];
@@ -51,6 +54,7 @@ function Document({ children, title }: DocumentProps) {
         <meta content="width=device-width,initial-scale=1" name="viewport" />
         {title && <title>{title}</title>}
         <Meta />
+        <meta content={keywords} name="keywords" />
         <Links />
         <ColorSchemeScript />
       </head>
@@ -74,7 +78,7 @@ clientLoader.hydrate = true;
 
 export function HydrateFallback() {
   return (
-    <Document>
+    <Document title="Loading...">
       <PageLoadFallback />
     </Document>
   );
@@ -83,7 +87,7 @@ export function HydrateFallback() {
 export default function App() {
   const data = useLoaderData<Jsonify<CoreLoaderData>>();
   return (
-    <Document>
+    <Document title={MyName}>
       <React.Suspense fallback={<PageLoadFallback />}>
         <Page>
           <Outlet />
