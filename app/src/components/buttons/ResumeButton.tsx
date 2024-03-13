@@ -9,7 +9,7 @@ export default function ResumeButton() {
     <ExternalLinkButton
       Icon={IconFileDownload}
       color={color}
-      href="https://dv8qyiytu2cuu.cloudfront.net/sverg_resume.pdf"
+      href="https://dv8qyiytu2cuu.cloudfront.net/sverg_resume_2024.pdf"
       label="Download resume"
     />
   );
